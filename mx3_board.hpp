@@ -88,6 +88,8 @@ class MX3board{
      int last_error = 0;
      unsigned char board_d_read( unsigned char addr);
      Reg8 operator[](unsigned char addr);
+     void operator<<(const std::string& message);
+
 
 };
 #else
