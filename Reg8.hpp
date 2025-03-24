@@ -9,8 +9,9 @@ class Reg8{
     Reg8(MX3board& temp_board, unsigned char temp_addr);
     MX3board& board;
     int tty = board.tty;
-    unsigned char addr;
+    unsigned char addr_led;
     void operator=(unsigned char data);
+    operator unsigned char();
 };
 
 #endif

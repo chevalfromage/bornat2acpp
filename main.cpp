@@ -4,13 +4,10 @@
 
 int main(int argc, char *argv[]) {
     MX3board brd { argv[1] };
-    //MX3board* p = &brd;
-    //std::cout << &brd->tty << std::endl;
-    //brd.board_d_write(MX3ADDR_LED, 0x60);
     Reg8 myReg8 {brd, MX3ADDR_LED};
-    myReg8=0x60;
-    //std::cout << "Valeur des switchs : " << (int)brd[MX3ADDR_SW] << std::endl;
-
+    myReg8=0x12;
+    unsigned char etat_switchs = myReg8;
+    std::cout << (int)etat_switchs << std::endl;
     return 0;
 
     // // check that we received the filename of the tty connection
