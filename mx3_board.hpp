@@ -9,6 +9,7 @@
 #include <termios.h> // to access tty configuration
 #include <unistd.h>  // write(), read(), close()
 #include <fcntl.h>   // Contains file controls like O_RDWR
+#include "Reg8.hpp"
 
 
 // Board addresses
@@ -74,9 +75,11 @@
 
 # define CBAUD	 000000010017
 
+// class Reg8;
 class MX3board{
      public:
      MX3board(const char* temp_port);
+
      char* port;
      int tty=0;
      int board_open();
@@ -84,9 +87,11 @@ class MX3board{
      void board_d_write(unsigned char addr, unsigned char data);
      int last_error = 0;
      unsigned char board_d_read( unsigned char addr);
-     unsigned char operator[](unsigned char addr);
+     Reg8 operator[](unsigned char addr);
 
 };
+#else
 
+class MX3board;
 
 #endif

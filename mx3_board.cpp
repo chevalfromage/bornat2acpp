@@ -1,4 +1,7 @@
+
+
 #include "mx3_board.hpp"
+
 
 MX3board::MX3board(const char* temp_port){
     port = (char*)temp_port;
@@ -104,6 +107,8 @@ unsigned char MX3board::board_d_read( unsigned char addr) {
     return gen[0];
 }
 
-unsigned char MX3board::operator[](unsigned char addr){
-    return MX3board::board_d_read( addr);
+Reg8 MX3board::operator[](unsigned char addr){
+    //MX3board instance = *this;
+    Reg8 temp {this, addr};
+    return temp;
 }
