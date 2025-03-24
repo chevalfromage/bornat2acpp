@@ -5,7 +5,8 @@
 int main(int argc, char *argv[]) {
     MX3board brd { argv[1] };
     Reg8 myReg8 {brd, MX3ADDR_LED};
-    myReg8=0x12;
+    myReg8=0x2;
+
     unsigned char etat_switchs = myReg8;
     std::cout << (int)etat_switchs << std::endl;
     return 0;
