@@ -74,7 +74,7 @@ void MX3board::board_d_write( unsigned char addr, unsigned char data) {
     gen[0] = MX3CMD_WR1;
     gen[1] = addr;
     gen[2] = data;
-    std::cout << "operator lance     " << tty <<"     " <<(int)gen[0] <<"     "<< (int)gen[1] <<"     "<< (int)gen[2] <<std::endl;
+    //std::cout << "operator lance     " << tty <<"     " <<(int)gen[0] <<"     "<< (int)gen[1] <<"     "<< (int)gen[2] <<std::endl;
 
     // actually send command
     write(tty, gen, 3);
