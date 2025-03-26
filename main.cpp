@@ -11,16 +11,17 @@ int main(int argc, char *argv[]) {
     Reg8 myReg8SW = brd[MX3ADDR_SW];
     Reg8 myReg8LED = brd[MX3ADDR_LED];
 
-    Bit myBit {&myReg8LED};
-    bool mesBoules[8]={1,1,1,1,0,1,1,1};
+    myReg8LED=0x0;
 
-    //unsigned char monChar = 0x01;
-    myBit=mesBoules;
+    Bit myBit {&myReg8LED, 1};
+    myBit=1;
 
-    //myReg8LED=0x60;
+    bool LeBoule = myBit;
+    std::cout << LeBoule << std::endl;
+    
 
     unsigned char etat_switchs = myReg8SW;
-    std::cout << (int)etat_switchs << std::endl;
+    //std::cout << (int)etat_switchs << std::endl;
     brd << "trop bien";
     brd << "le language";
     brd << "C++";

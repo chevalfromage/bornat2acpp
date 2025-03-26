@@ -15,8 +15,3 @@ Reg8::operator unsigned char(){
     return board->board_d_read(addr);
 }
 
-// void Reg8::lcd(const std::string& message){
-//     for(int i=0; i<=message.size(); i++){
-//         board->board_d_write(addr+i, message[i]);
-//     }
-// }
