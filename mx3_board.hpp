@@ -79,7 +79,7 @@
 class MX3board{
      public:
      MX3board(const char* temp_port);
-
+     std::string lcd_precedent;
      char* port;
      int tty=0;
      int board_open();

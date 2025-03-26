@@ -14,7 +14,8 @@ int main(int argc, char *argv[]) {
 
     unsigned char etat_switchs = myReg8SW;
     std::cout << (int)etat_switchs << std::endl;
-
-    brd << "zizi";
+    brd << "trop bien";
+    brd << "le language";
+    brd << "C++";
     return 0;
 }

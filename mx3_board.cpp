@@ -115,11 +115,23 @@ Reg8 MX3board::operator[](unsigned char addr){
 
 
 void MX3board::operator<<(const std::string& message) {
-    int addr = MX3ADDR_LCD_START;  
+    int addr = MX3ADDR_LCD_START;
+
+    
+
+    const std::string& efface = "                                ";
+    for (size_t i = 0; i < efface.size(); ++i) {
+        board_d_write(addr + i, efface[i]);
+    }  
+    for (size_t i = 0; i < lcd_precedent.size(); ++i) {
+        board_d_write(addr + i, lcd_precedent[i]);
+    } 
     for (size_t i = 0; i < message.size(); ++i) {
-        board_d_write(addr + i, message[i]);
+        board_d_write(addr + i+16, message[i]);
     }
-    std::cout << "massage: " << message << std::endl;
+    
+    lcd_precedent = message;
+    //std::cout << "message: " << message << std::endl;
 }
 
 
