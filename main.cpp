@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
     unsigned char etat_switchs = myReg8SW;
     std::cout << "Etat des switch sur la board : " << (int)etat_switchs << std::endl;
 
-    myReg8LED=0x3;
+    myReg8LED=0x2;
 
 //Tests sur la class Bit
 
@@ -29,6 +29,8 @@ int main(int argc, char *argv[]) {
     myBit=1;
     std::cout << "Reg8LED après changement d'un bit : " << (int)myReg8LED << std::endl;
     
+    bool unBitDeLED = myReg8LED[1];
+    std::cout << "On regarde un bit dans un Reg8 : " << (int)unBitDeLED << std::endl;
     
 
 //Test sur l'écran LCD

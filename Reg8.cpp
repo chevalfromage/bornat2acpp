@@ -16,5 +16,7 @@ Reg8::operator unsigned char(){
 }
 
 bool Reg8::operator[](int indice){
-    return 1;
+    Bit lookForBit {this, indice};
+    bool res = lookForBit;
+    return res;
 }

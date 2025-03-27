@@ -3,6 +3,7 @@
 
 #include <unistd.h> 
 #include "mx3_board.hpp"
+#include "Bit.hpp"
 
 class Reg8{
 public:
