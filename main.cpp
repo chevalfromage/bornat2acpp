@@ -6,24 +6,30 @@
 
 int main(int argc, char *argv[]) {
     MX3board brd { argv[1] };
-    //Reg8 myReg8 {brd, MX3ADDR_LED};
 
     Reg8 myReg8SW = brd[MX3ADDR_SW];
     Reg8 myReg8LED = brd[MX3ADDR_LED];
 
-    myReg8LED=0x3;
 
-    std::cout << (int)myReg8LED << std::endl;
-
-    Bit myBit {&myReg8LED, 0};
-    myBit=1;
-    bool LeBoule = myBit;
-    
-    std::cout << (int)myReg8LED << std::endl;
-    
+//Tests sur la class Reg8
 
     unsigned char etat_switchs = myReg8SW;
-    //std::cout << (int)etat_switchs << std::endl;
+    std::cout << "Etat des switch sur la board : " << (int)etat_switchs << std::endl;
+
+    myReg8LED=0x8;
+
+//Tests sur la class Bit
+
+    std::cout << "Reg8LED avant changement d'un bit : " <<(int)myReg8LED << std::endl;
+    Bit myBit {&myReg8LED, 1};
+    myBit=1;
+    std::cout << "Reg8LED après changement d'un bit : " << (int)myReg8LED << std::endl;
+    
+    bool LeBoule = myBit;
+    std::cout << "Récupération de la valeur de myBit :"<< LeBoule << std::endl;
+
+//Test sur l'écran LCD
+
     brd << "trop bien";
     brd << "le language";
     brd << "C++";

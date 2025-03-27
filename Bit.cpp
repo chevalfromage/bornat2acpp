@@ -2,7 +2,7 @@
 
 Bit::Bit(Reg8* myReg8_temp, const int bit_addr_temp){
     myReg8 = myReg8_temp;
-    bit_addr = bit_addr_temp;
+    bit_addr = 7-bit_addr_temp;
 }
 
 void Bit::operator=(bool boolIn_temp){
