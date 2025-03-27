@@ -4,11 +4,11 @@
 #include "Reg8.hpp"
 
 class Bit{
-    public:
+public:
     Bit(Reg8* myReg8_temp, const int bit_addr_temp);
     void operator=(bool boolIn_temp);
     operator bool();
-    private:
+private:
     int bit_addr;
     unsigned char char_entier;
     bool bool_entier[8];

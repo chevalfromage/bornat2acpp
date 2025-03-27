@@ -15,9 +15,9 @@ void Bit::operator=(bool boolIn_temp){
 }
 
 void Bit::charToBoolArray() {
-    for (int i = 7; i >= 0; --i) {  // On commence par le bit de poids fort (bit 7)
-        bool_entier[i] = (char_entier & 1);  // Vérifie si le bit le plus à droite est 1 ou 0
-        char_entier >>= 1;  // Décale c d'un bit vers la droite pour examiner le bit suivant
+    for (int i = 7; i >= 0; --i) {
+        bool_entier[i] = (char_entier & 1);
+        char_entier >>= 1;
     }
 }
 
@@ -32,5 +32,8 @@ void Bit::boolArrayToChar() {
 }
 
 Bit::operator bool(){
-    return boolIn;
+    char_entier = *myReg8;
+    this->charToBoolArray();
+    bool res = bool_entier[bit_addr];
+    return res;
 }

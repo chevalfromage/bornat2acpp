@@ -16,17 +16,20 @@ int main(int argc, char *argv[]) {
     unsigned char etat_switchs = myReg8SW;
     std::cout << "Etat des switch sur la board : " << (int)etat_switchs << std::endl;
 
-    myReg8LED=0x8;
+    myReg8LED=0x3;
 
 //Tests sur la class Bit
 
     std::cout << "Reg8LED avant changement d'un bit : " <<(int)myReg8LED << std::endl;
     Bit myBit {&myReg8LED, 1};
+
+    bool LeBoule = myBit;
+    std::cout << "Récupération de la valeur de myBit :"<< LeBoule << std::endl;
+
     myBit=1;
     std::cout << "Reg8LED après changement d'un bit : " << (int)myReg8LED << std::endl;
     
-    bool LeBoule = myBit;
-    std::cout << "Récupération de la valeur de myBit :"<< LeBoule << std::endl;
+    
 
 //Test sur l'écran LCD
 

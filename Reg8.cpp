@@ -15,3 +15,6 @@ Reg8::operator unsigned char(){
     return board->board_d_read(addr);
 }
 
+bool Reg8::operator[](int indice){
+    return 1;
+}
