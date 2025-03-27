@@ -29,7 +29,7 @@ int main(int argc, char *argv[]) {
     myBit=1;
     std::cout << "Reg8LED après changement d'un bit : " << (int)myReg8LED << std::endl;
     
-    bool unBitDeLED = myReg8LED[1];
+    bool unBitDeLED = myReg8LED[0];
     std::cout << "On regarde un bit dans un Reg8 : " << (int)unBitDeLED << std::endl;
     
 
