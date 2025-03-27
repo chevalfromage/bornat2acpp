@@ -15,8 +15,8 @@ class Bit{
     bool boolIn;
     char charIn;
     Reg8* myReg8;
-    void boolArrayToChar(bool arr[8]);
-    void charToBoolArray(char c);
+    void boolArrayToChar();
+    void charToBoolArray();
 };
 
 #endif
