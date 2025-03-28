@@ -34,9 +34,27 @@ int main(int argc, char *argv[]) {
     
 
 //Test sur l'écran LCD
-
-    brd << "trop bien";
-    brd << "le language";
-    brd << "C++";
+    Reg8 myReg8Time = brd[MX3ADDR_UPTIME_L];
+    unsigned char timer;
+    int periode =1;
+    int tourne =0;
+    while (1){
+        timer =myReg8Time;
+        if((int)timer >= periode){
+            if(tourne ==0){
+                brd << "trop bien";
+                tourne =1;
+            }
+            else if(tourne ==1){
+                brd << "le language";
+                tourne =2;
+            }
+            else{
+                brd << "C++";
+                tourne =0;
+            }
+            periode =(int)timer+1;
+        }
+    }
     return 0;
 }
