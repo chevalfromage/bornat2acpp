@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
     unsigned char timer;
     int periode =1;
     int tourne =0;
-    while (1){
+    while (1){ //boucle de défilement du texte sur l'écran
         timer =myReg8Time;
         if((int)timer >= periode){
             if(tourne ==0){
