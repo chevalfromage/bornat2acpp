@@ -114,14 +114,21 @@ unsigned char MX3board::board_d_read( unsigned char addr) {
     gen[0] = MX3CMD_RD1;
     gen[1] = addr;
 
+
+
     // actually send command
-    write(tty, gen, 2);
-    // retreive data from board (1 byte)
-    if (!read(tty, gen, 1)) {
+    try{
+        write(tty, gen, 2);
+        if (!read(tty, gen, 1)){
+            // retreive data from board (1 byte)
+            throw std::runtime_error("No answer from board\n");
+        }    
+    }
+    catch(std::runtime_error& e){
         // read returned 0 (no data received)
-        std::cout << "No answer from board\n" << std::endl;
+        std::cout << e.what() << std::endl;
         last_error = -1;
-        return 0;
+        return 0;    
     }
     
     return gen[0];
