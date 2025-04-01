@@ -24,7 +24,20 @@ int MX3board::board_open(){
     //     -4 : error reported while setting necessary parameters
 
     // opening the file entry
-    tty = open(port, O_RDWR);
+
+    try{
+        tty = open(port, O_RDWR);
+        if(tty ==0 ){
+            std::cout << "on a bien tty ==0"<< std::endl;
+            throw std::runtime_error("Unable to connect to board\n");
+        }
+    }
+    catch(const std::exception& e){
+        std::cout << "Exception: "<< e.what() << std::endl;
+        return -1;
+    }
+
+
     if (tty == 0) {
         std::cout << "Unable to connect to board\n" << std::endl;
         return -1;
