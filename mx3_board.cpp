@@ -37,11 +37,6 @@ int MX3board::board_open(){
         return -1;
     }
 
-
-    if (tty == 0) {
-        std::cout << "Unable to connect to board\n" << std::endl;
-        return -1;
-    }
     std::cout << "Board connection opened\n" << std::endl;
 
     // preparing the parameter set
@@ -56,21 +51,33 @@ int MX3board::board_open(){
     cfsetispeed(&newtermios,B115200);
 
     // clean input buffer
-    if (tcflush(tty,TCIFLUSH)==-1) {
-        std::cout << "Unable to flush board connection input\n" << std::endl;
+
+    try{
+        if (tcflush(tty,TCIFLUSH)==-1) {
+            throw std::runtime_error("Unable to flush board connection input\n");
+        }
+        // clean output buffer
+        if (tcflush(tty,TCOFLUSH)==-1){
+            throw std::runtime_error("Unable to flush board connection output\n");
+        }
+        // actually set parameters
+        if (tcsetattr(tty,TCSANOW,&newtermios)==-1){
+            throw std::runtime_error("Unable to set connection parameters\n");
+            
+        }
+    }
+    catch(std::runtime_error& e){
+        std::cout << e.what()<< std::endl;
         board_close(tty);
+    }
+
+    if (tcflush(tty,TCIFLUSH)==-1) {
         return -2;
     }
-    // clean output buffer
     if (tcflush(tty,TCOFLUSH)==-1){
-        std::cout << "Unable to flush board connection output\n" << std::endl;
-        board_close(tty);
         return -3;
     }
-    // actually set parameters
     if (tcsetattr(tty,TCSANOW,&newtermios)==-1){
-        std::cout << "Unable to set connection parameters\n" << std::endl;
-        board_close(tty);
         return -4;
     }
 
